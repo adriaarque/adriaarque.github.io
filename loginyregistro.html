@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>Web personal de Adria</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Workbench&display=swap" rel="stylesheet">
+	
+	<link rel="stylesheet" href="loginyregistro.css" />
+</head>
+<body>
+	<header>
+		<h1>Adrià Arqué González</h1>
+		<nav>
+			<ul>
+				<li><a href="ejercicio_web_personal.html">Portada</a></li>
+				<li><a href="cv_adria.pdf">CV</a></li>
+				<li><a href="about.html">Sobre mí</a></li>
+				<li><a href="contact.html">Contacto</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main id="login_register">
+	<form>
+		<h2>Registro</h2>
+
+			<p id="mensaje"><em>Introduzca credenciales</em></p>
+			<p><label for="user_form">Usuario:</label> <input type="text" name="user_login" id="user_form" placeholder="Tu correo electrónico" /></p>
+			<p><label for="pass_form">Password:</label> <input type="password" name="pass" id="pass_form" placeholder="Tu contraseña"/></p>
+			<p><label for="pass_form_2">Repetir Password:</label> <input type="password" name="pass" id="pass_form_2" placeholder="Confirmar contraseña"/></p>
+			<p><input type="checkbox" value="robot" id="robot_form"/> <label for="robot_form">¿Eres un robot?</label></p>
+			<p><input type="button" value="Register"  id="button_registration"/></p>
+			
+			<script>
+			let mensaje = document.getElementById("mensaje");
+			let user = document.getElementById("user_form");
+			let password = document.getElementById("pass_form");
+			
+			let boton_registro = document.getElementById("button_registration");
+            boton_registro.addEventListener("click", function(event) {
+                    comprobar_comillas();
+					comprobar_user();
+                    comprobar_password();
+					todo_ok();
+            });
+			
+			function comprobar_comillas() {
+			let reg = /['"]/g; //es global
+			if (reg.test(user.value)) {
+				let mensaje_error = "Error, no puede haber comillas";
+				user.style.color = "red";
+				console.log(mensaje_error);
+				mensaje.innerHTML = "Error, no puede haber comillas";
+				}
+			}
+
+			function comprobar_user() {
+			if (user.value.length < 4 && password.value === "") {
+				console.log("El usuario debe de tener más de 4 letras");
+				user.style.color = "red";
+				mensaje.innerHTML = "El usuario debe de tener más de 4 letras";
+				}
+			else if (user.value.length > 4 && password.value === ""){
+				user.style.color = "red";
+				mensaje.innerHTML = "Falta introducir la contraseña";
+				}
+			}
+			
+			function comprobar_password() {
+			if (password.value != "") {
+				if (password.value.length < 6 || password.value.length > 16) {
+					console.log("La contraseña debe tener entre 6 y 16 carácteres");
+					mensaje.innerHTML = "La contraseña debe tener entre 6 y 16 carácteres";
+					}
+				}
+			}
+			
+			function todo_ok() {
+			if (password != "" && password.value.length > 6 && password.value.length < 16 && user != "" && user.value.length > 4) {
+				let mensaje_ok = "OK, todo correcto";
+				user.style.color = "green";
+				console.log(mensaje_ok);
+				mensaje.innerHTML = "OK, todo correcto";
+				}
+			}
+			
+		</script>
+	</form>
+
+	<form>
+		<h2>Login</h2>
+
+			<p><label for="login_form">Usuario:</label> <input type="text" name="login" id="login_form" placeholder="Tu usuario"/></p>
+			<p><label for="pass_form_login">Password:</label> <input type="password" name="pass" id="pass_form_login" placeholder="Tu contraseña"/></p>
+			<p><input type="checkbox" name="robot" id="robot_form_login"/> <label for="robot_form_login">¿Eres un robot?</label></p>
+			<p><input type="submit" value="Login" id="login_button" /></p>               
+	</form>
+	</main>
+	
+	<footer>
+		<p>Copyright (c) Adrià Arqué S.A. 2024</p>
+	</footer>
+</body>
+</html>
