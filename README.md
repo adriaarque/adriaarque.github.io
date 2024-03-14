@@ -67,3 +67,11 @@ Las listas anidadas son listas dentro de listas
 	-...dentro de otra con orden
 
 Para meter una lista dentro de otra, utilizamos la tabulación.
+
+### Imágenes
+
+Para añadir una imágen, hemos de dar una descripción y el nombre de la imagen (con la ruta, si hiciera falta).
+
+![Espiritu Santo](Jesus.jpg)
+
+La sintaxis es: exclamación seguido de una descripción dentro de llaves anguladas, seguido del nombre de la imagen entre paréntesis (sin espacios entre exclamación, llaves anguladas y paréntesis).
